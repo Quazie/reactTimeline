@@ -2,7 +2,7 @@ import React from 'react';
 import { Year } from './components/Year';
 
 interface ITimeline {
-    birthYear: number;
+    birthDay: Date;
     gender?: 'm' | 'f';
 }
 
@@ -21,13 +21,17 @@ export class Timeline extends React.Component<ITimeline> {
         }
     }
 
+    private renderYears() {
+        const weeksToRender = Math.ceil(this.getLifeExpectancy() * 52);
+    }
+
     render() {
-        const { birthYear } = this.props;
+        const { birthDay } = this.props;
+        const birthYear = birthDay.getFullYear();
         return (
             <div>
-                Timeline goes here
                 <Year year={birthYear} startMonth={3} />
-                <Year year={birthYear + this.getLifeExpectancy()} startMonth={0} />
+                <Year year={Math.floor(birthYear + this.getLifeExpectancy())} startMonth={0} />
             </div>
         );
     }

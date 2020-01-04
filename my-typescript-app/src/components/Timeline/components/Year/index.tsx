@@ -1,5 +1,7 @@
 import React from 'react';
-import { Month } from './components/Month';
+import { Week } from './components/Week';
+
+import styles from '../..//timeline.module.css';
 
 interface IYear {
     year: number;
@@ -11,8 +13,8 @@ export class Year extends React.Component<IYear> {
         const { startMonth } = this.props;
         let monthElements: JSX.Element[] = [];
 
-        for (let i = startMonth; i < 12; i++) {
-            monthElements.push(<Month message="| |" key={i} />);
+        for (let i = startMonth; i < 52; i++) {
+            monthElements.push(<Week message="" key={i} />);
         }
 
         return monthElements;
@@ -21,9 +23,10 @@ export class Year extends React.Component<IYear> {
     render() {
         const { year } = this.props;
         return (
-            <div>
-                {year} {this.renderMonths()}
-            </div>
+            <>
+                <div className={`${styles.year} ${styles.timelineElement}`}>{year} </div>
+                {this.renderMonths()}
+            </>
         );
     }
 }
