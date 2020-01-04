@@ -15,7 +15,16 @@ export class Year extends React.Component<IYear> {
         let monthElements: JSX.Element[] = [];
 
         for (let i = startWeek; i < endWeek; i++) {
-            monthElements.push(<Week message="" key={i} />);
+            let message = '';
+            if (i == startWeek && startWeek !== 0) {
+                message = 'I was born';
+            }
+
+            if (i == endWeek - 1 && endWeek !== 52) {
+                message = 'Expected life expectancy';
+            }
+
+            monthElements.push(<Week message={message} key={i} />);
         }
 
         return monthElements;

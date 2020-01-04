@@ -2,6 +2,7 @@ import React from 'react';
 import { Year } from './components/Year';
 import { DateTime } from 'luxon';
 import { DecadeHeader } from './components/DecadeHeader';
+import { getLifeExpectancy } from '../../helpers/LifeExpectancy';
 
 interface ITimeline {
     birthDay: DateTime;
@@ -10,16 +11,20 @@ interface ITimeline {
 
 export class Timeline extends React.Component<ITimeline> {
     private getLifeExpectancy() {
+        const { birthDay } = this.props;
+        let birthYear = birthDay.year;
         const { gender } = this.props;
+        const [_, generic, m, f] = getLifeExpectancy(birthYear);
+
         // TODO: Make this more accurate per birthyear - currently using
         // 1987 from https://www.infoplease.com/life-expectancy-birth-race-and-sex-1930-2010
         switch (gender) {
             case 'm':
-                return 71.4;
+                return m;
             case 'f':
-                return 78.3;
+                return f;
             default:
-                return 74.9;
+                return generic;
         }
     }
 
