@@ -5,15 +5,16 @@ import styles from '../..//timeline.module.css';
 
 interface IYear {
     year: number;
-    startMonth: number;
+    startWeek: number;
+    endWeek: number;
 }
 
 export class Year extends React.Component<IYear> {
     renderMonths() {
-        const { startMonth } = this.props;
+        const { startWeek, endWeek } = this.props;
         let monthElements: JSX.Element[] = [];
 
-        for (let i = startMonth; i < 52; i++) {
+        for (let i = startWeek; i < endWeek; i++) {
             monthElements.push(<Week message="" key={i} />);
         }
 

@@ -1,6 +1,14 @@
 .week {
 }
 
+.decadeHeader {
+    position: sticky;
+    top: 0;
+    text-align: left;
+    background-color: white;
+    padding: 5px;
+}
+
 .year {
     background-color: orange;
 }
