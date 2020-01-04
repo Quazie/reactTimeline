@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Quazie/reactTimeline/issues"
   },
-  "homepage": "https://github.com/Quazie/reactTimeline#readme"
+  "homepage": "https://github.com/Quazie/reactTimeline#readme",
+  "dependencies": {
+    "prettier": "^1.19.1"
+  }
 }
